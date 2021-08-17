@@ -1,0 +1,22 @@
+param (
+[parameter(mandatory = $true)][string]$ResourceGroupName,
+[parameter(mandatory = $true)][string]$ResourceName,
+[parameter(mandatory = $true)][string]$Resouretype
+)
+
+Begin{
+        [string]$ResourceGroupName
+        [string]$ResourceName
+        [string]$Resouretype
+}
+Process {
+    try {
+        Get-AzResource -ResourceGroupName $ResourceGroupName -Name $ResourceName -ResourceType $ResourceType
+    }
+    Catch {
+        "it didn't work"
+    }
+}
+end {
+    "End of process"
+}
